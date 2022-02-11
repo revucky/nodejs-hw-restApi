@@ -75,7 +75,7 @@ const updateContact = async (req, res, next) => {
       });
       fs.writeFile(contactsPath, JSON.stringify(contacts));
       const updCont = contacts.filter((el) => el.id === id);
-      res.json(updCont);
+      res.json(updCont); 
     }
   } catch (error) {
     console.log(error.message);
