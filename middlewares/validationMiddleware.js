@@ -17,7 +17,7 @@ const addContactValid = (req, res, next) => {
   next();
 };
 
-const validatePatch = (req, res, next) => {
+const validatePut = (req, res, next) => {
   const updContSchema = Joi.object({
     name: Joi.string().min(2).max(20),
     email: Joi.string()
@@ -32,8 +32,25 @@ const validatePatch = (req, res, next) => {
   }
   next();
 };
+const validatePatch = (req, res, next) => {
+  const updContSchema = Joi.object({
+    name: Joi.string().min(2).max(20),
+    email: Joi.string()
+      .min(2)
+      .max(20)
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
+    phone: Joi.string().min(6).max(12),
+    favorite: Joi.boolean().required(),
+  });
+  const { error } = updContSchema.validate(req.body);
+  if (error) {
+    return res.status(400).send(error.message);
+  }
+  next();
+};
 
 module.exports = {
   addContactValid,
+  validatePut,
   validatePatch,
 };
