@@ -1,4 +1,4 @@
-const {UserModel} = require("../db/contscts.model")
+const {UserModel} = require("../src/db/contscts.model")
 
 const listContacts = async (req, res, next) => {
   try {
