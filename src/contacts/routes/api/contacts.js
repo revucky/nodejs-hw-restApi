@@ -3,7 +3,7 @@ const {
   addContactValid,
   validatePut,
   validatePatch,
-} = require("../../middlewares/validationMiddleware");
+} = require("../../src/db/middlewares/validationMiddleware");
 
 const {
   listContacts,
@@ -12,7 +12,7 @@ const {
   removeContact,
   updateContact,
   updateStatusContact,
-} = require("../../models/contacts");
+} = require("../../../../models/contacts");
 
 const router = express.Router();
 
